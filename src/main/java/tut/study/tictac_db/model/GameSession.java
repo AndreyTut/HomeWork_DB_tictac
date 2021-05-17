@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -17,8 +14,22 @@ import javax.persistence.Table;
 @Builder
 @Table(name = "gamesession")
 public class GameSession {
-    @Id
-    @GeneratedValue
-    private int id;
+
+    @EmbeddedId
+    GameSessionId id;
+
     private int result;
+
+    @ManyToOne
+    @MapsId("playerId")
+    private Player player;
+    @ManyToOne
+    @MapsId("gameId")
+    private Game game;
+
+    public GameSession(Player player, Game game) {
+        this.player = player;
+        this.game = game;
+        this.id = new GameSessionId(player.getId(), game.getId());
+    }
 }

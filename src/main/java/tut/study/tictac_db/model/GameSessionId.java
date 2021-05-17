@@ -1,19 +1,21 @@
 package tut.study.tictac_db.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 import java.io.Serializable;
 
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Embeddable
 public class GameSessionId implements Serializable {
-    private int id;
+    @Column(name = "player_id")
+    private Integer playerId;
+    @Column(name = "game_id")
+    private Integer gameId;
 }

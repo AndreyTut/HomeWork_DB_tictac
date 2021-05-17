@@ -25,12 +25,7 @@ public class GameSessionService {
     public void create(GameSessionDto dto) {
         Player player = playerService.get(dto.getPlayerId());
         Game game = gameService.get(dto.getGameId());
-        GameSession gameSession = GameSession
-                .builder()
-                .result(dto.getResult())
-                .game(game)
-                .player(player)
-                .build();
+        GameSession gameSession = new GameSession(player, game);
         gameSessionRepository.save(gameSession);
     }
 }
