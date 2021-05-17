@@ -1,2 +1,3 @@
-insert into player
-values (10001, 'John', 'john@mail.com', 'secret');
+
+
+insert into player(name, email, password) values ( 'john', 'john@ukr.net', 'topsecretmylo' )

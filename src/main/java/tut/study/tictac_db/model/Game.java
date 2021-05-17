@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 public class Game {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private int fieldWidth;
@@ -24,7 +24,6 @@ public class Game {
     @Column(name = "steps_to_win")
     private int steps;
     private Timestamp timestamp;
-    @OneToMany
-    @JoinColumn(name = "game_id")
+    @OneToMany(mappedBy = "game")
     private List<GameSession> sessions;
 }

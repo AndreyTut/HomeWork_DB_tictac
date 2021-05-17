@@ -28,9 +28,9 @@ public class GameSessionService {
         GameSession gameSession = GameSession
                 .builder()
                 .result(dto.getResult())
+                .game(game)
+                .player(player)
                 .build();
-        player.getSessions().add(gameSession);
-        game.getSessions().add(gameSession);
         gameSessionRepository.save(gameSession);
     }
 }

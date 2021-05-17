@@ -51,10 +51,9 @@ public class TictacDbApplication implements CommandLineRunner {
                 .timestamp(new Timestamp(System.currentTimeMillis())).build();
 
         GameSession gameSession = GameSession.builder().result(1).build();
-        player1.setSessions(List.of(gameSession));
-        game.setSessions(List.of(gameSession));
-        player1.setSessions(List.of(gameSession));
-        game.setSessions(List.of(gameSession));
+
+        gameSession.setGame(game);
+        gameSession.setPlayer(player1);
         playerService.save(player1);
         playerService.save(player2);
         gameRepository.save(game);

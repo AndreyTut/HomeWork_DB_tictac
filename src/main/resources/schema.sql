@@ -1,6 +1,6 @@
 create table player
 (
-    id       integer not null,
+    id       identity not null,
     name     varchar not null,
     email    varchar,
     password varchar,
@@ -9,20 +9,23 @@ create table player
 
 create table game
 (
-    id           integer not null,
+    id           identity not null,
     field_width  integer not null,
     field_height integer not null,
     steps_to_win integer not null,
-    timestamp    timestamp
+    timestamp    timestamp,
+    primary key (id)
 );
 
 create table gamesession
 (
-    id        integer not null,
+    id           identity not null,
     player_id integer not null,
     game_id   integer not null,
     result    integer not null,
-    foreign key (player_id) references player (id),
-    foreign key (game_id) references game (id)
+    primary key (id)
+--     primary key (player_id, game_id),
+--     foreign key (player_id) references player (id),
+--     foreign key (game_id) references game (id)
 );
 

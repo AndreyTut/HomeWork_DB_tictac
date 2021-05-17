@@ -19,7 +19,11 @@ public class PlayerController {
 
     @GetMapping
     public List<Player> getAll() {
-        return playerService.getAll();
+        List<Player> players = playerService.getAll();
+//        players.stream()
+//                .map(Player::getSessions)
+//                .
+        return players;
     }
 
     @PostMapping

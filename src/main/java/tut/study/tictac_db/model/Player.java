@@ -20,7 +20,6 @@ public class Player {
     private String name;
     private String email;
     private String password;
-    @OneToMany
-    @JoinColumn(name = "player_id")
+    @OneToMany(mappedBy = "player")
     private List<GameSession> sessions;
 }
